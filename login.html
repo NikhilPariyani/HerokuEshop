@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="p-4 ml-5 mr-5">
+        <div class="col-lg-4 mx-auto border rounded pt-4 pb-4">
+            <h3 class="alert text-center">LOGIN</h3>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                  {{error}}
+                </div>
+                {% endif %}
+                <!--Email-->
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input  type="email" 
+                  name="email" 
+                  value="{{values.email}}"
+                  id="" class="form-control form-control-sm" 
+                  placeholder="example@gmail.com">
+                </div>
+                 <!--Password-->
+                 <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" 
+                    name="password" 
+                    id="" class="form-control form-control-sm" 
+                    placeholder="********">
+                  </div>
+                  <!--Button-->
+                  <div class="form-group">
+                      <input class='btn btn-sm btn-success col-lg-4'
+                      type="submit" value="Login">
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
